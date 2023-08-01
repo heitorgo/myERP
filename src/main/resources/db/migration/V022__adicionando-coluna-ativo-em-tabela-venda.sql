@@ -1,0 +1,1 @@
+alter table venda add column ativo boolean not null;

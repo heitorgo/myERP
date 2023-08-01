@@ -1,0 +1,1 @@
+alter table venda add column forma_pagamento_id bigint not null;

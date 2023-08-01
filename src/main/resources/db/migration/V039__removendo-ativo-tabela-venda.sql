@@ -1,0 +1,1 @@
+alter table venda drop column ativo;

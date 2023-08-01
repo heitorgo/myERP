@@ -1,0 +1,18 @@
+{
+    "descricao": "Venda de porcas",
+    "caixa": {
+        "id": 1
+    },
+    "funcionario": {
+        "id": 1
+    },
+    "formaPagamento":{
+        "id": 1
+    },
+    "itens":[
+        {
+            "produtoId": null,
+            "quantidade": 20
+        }
+    ]
+}

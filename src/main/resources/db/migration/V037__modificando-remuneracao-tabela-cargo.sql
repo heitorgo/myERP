@@ -1,0 +1,1 @@
+alter table cargo modify column remuneracao decimal(10,2);

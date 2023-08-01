@@ -1,0 +1,1 @@
+alter table empresa modify column razao_social varchar(60) not null;

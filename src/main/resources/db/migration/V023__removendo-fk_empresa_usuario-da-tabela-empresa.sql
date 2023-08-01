@@ -1,0 +1,1 @@
+alter table empresa drop foreign key fk_empresa_usuario;

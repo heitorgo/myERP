@@ -1,0 +1,1 @@
+alter table produto modify column valor decimal(10,2) not null;

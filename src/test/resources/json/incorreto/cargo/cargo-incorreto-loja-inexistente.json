@@ -1,0 +1,7 @@
+{
+    "titulo": "Gerente",
+    "remuneracao": 10000.0,
+    "loja": {
+        "id": 100
+    }
+}

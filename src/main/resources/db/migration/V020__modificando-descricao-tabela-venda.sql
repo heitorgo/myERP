@@ -1,0 +1,1 @@
+alter table venda modify column descricao varchar(255);

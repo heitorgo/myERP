@@ -1,0 +1,1 @@
+alter table empresa add column usuario_id bigint not null;

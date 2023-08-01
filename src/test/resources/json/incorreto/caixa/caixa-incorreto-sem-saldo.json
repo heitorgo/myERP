@@ -1,0 +1,7 @@
+{
+    "nome": "Caixa 1",
+    "saldo": null,
+    "loja": {
+        "id": 1
+    }
+}

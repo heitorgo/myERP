@@ -1,0 +1,1 @@
+alter table empresa add constraint fk_empresa_usuario foreign key (usuario_id) references usuario (id);

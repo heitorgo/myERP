@@ -1,0 +1,1 @@
+alter table produto modify column descricao varchar(255);

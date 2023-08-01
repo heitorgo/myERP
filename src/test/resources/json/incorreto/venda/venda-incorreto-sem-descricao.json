@@ -1,0 +1,18 @@
+{
+    "descricao": null,
+    "caixa": {
+        "id": 1
+    },
+    "funcionario": {
+        "id": 1
+    },
+    "formaPagamento":{
+        "id": 1
+    },
+    "itens":[
+        {
+            "produtoId": 1,
+            "quantidade": 20
+        }
+    ]
+}

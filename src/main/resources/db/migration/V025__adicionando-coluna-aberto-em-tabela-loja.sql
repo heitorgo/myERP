@@ -1,0 +1,1 @@
+alter table loja add aberto tinyint(1) not null;
