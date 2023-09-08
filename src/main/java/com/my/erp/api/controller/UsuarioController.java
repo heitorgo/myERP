@@ -22,7 +22,6 @@ import com.my.erp.api.model.input.usuario.SenhaInput;
 import com.my.erp.api.model.input.usuario.UsuarioComSenhaInput;
 import com.my.erp.api.model.input.usuario.UsuarioInput;
 import com.my.erp.api.model.usuario.UsuarioModel;
-import com.my.erp.domain.exception.UsuarioNaoEncontradoException;
 import com.my.erp.domain.model.Usuario;
 import com.my.erp.domain.repository.UsuarioRepository;
 import com.my.erp.domain.service.UsuarioService;
@@ -54,16 +53,8 @@ public class UsuarioController {
 		Usuario usuario = usuarioService.buscarOuFalhar(id);
 		return usuarioModelAssembler.toModel(usuario);
 	}
-
-	@GetMapping("/nome")
-	public List<UsuarioModel> listarPorNome(String nome) {
-		List<Usuario> usuarios = usuarioRepository.findAllByNomeContaining(nome);
-		if (usuarios.isEmpty()) {
-			throw new UsuarioNaoEncontradoException("Nenhum usuario contém o nome %s");
-		}
-		return usuarioModelAssembler.toCollectionModel(usuarios);
-	}
-
+	
+	// Adicionar encriptação Bcrypt
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public UsuarioModel adicionar(@RequestBody @Valid UsuarioComSenhaInput usuarioComSenhaInput) {

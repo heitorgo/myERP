@@ -15,7 +15,7 @@ import com.my.erp.domain.model.Venda;
 @Repository
 public interface VendaRepository extends JpaRepository<Venda, Long>, JpaSpecificationExecutor<Venda> {
 
-	@Query("from Venda v join fetch v.caixa join fetch v.funcionario ")
+	@Query("from Venda v join fetch v.caixa join fetch v.funcionario join fetch v.formaPagamento join fetch v.itens i join fetch i.produto")
 	List<Venda> findAll();
 	
 	List<Venda> findByCaixa(Caixa caixa);

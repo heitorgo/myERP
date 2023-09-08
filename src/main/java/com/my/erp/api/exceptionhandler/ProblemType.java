@@ -10,6 +10,8 @@ public enum ProblemType {
 	ENTIDADE_EM_USO("/entidade-em-uso", "Entidade em uso"),
 	ENTIDADE_INATIVA("/entidade-inativa", "Entidade inativa"),
 	ERRO_NEGOCIO("/erro-negocio", "Violação de regra de negócio"),
+	ERRO_AUTHENTICATION("/erro-autenticaçao", "Erro de autenticação"),
+	ERRO_ACESSO_NEGADO("/acesso-negado", "Acesso negado"),
 	ERRO_TIPO_NAO_SUPORTADO("/tipo-nao-suportado", "Erro tipo não suportado"),
 	ERRO_SISTEMA("/erro-sistema", "Erro de sistema"), DADOS_INVALIDOS("/dados-invalidos", "Dados inválidos"),
 	PARAMETRO_INVALIDO("/parametro-invalido", "Parametro inválido");

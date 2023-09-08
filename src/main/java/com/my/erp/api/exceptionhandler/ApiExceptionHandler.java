@@ -13,6 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -26,6 +27,8 @@ import com.fasterxml.jackson.databind.JsonMappingException.Reference;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.PropertyBindingException;
 import com.my.erp.core.validation.ValidacaoException;
+import com.my.erp.domain.exception.AcessoNegadoException;
+import com.my.erp.domain.exception.AuthenticationException;
 import com.my.erp.domain.exception.EntidadeEmUsoException;
 import com.my.erp.domain.exception.EntidadeNaoEncontradaException;
 import com.my.erp.domain.exception.NegocioException;
@@ -93,6 +96,30 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		ProblemType problemType = ProblemType.RECURSO_NAO_ENCONTRADO;
+		String detail = e.getMessage();
+
+		Problem problema = createProblemBuilder(status, problemType, detail).userMesage(detail).build();
+
+		return handleExceptionInternal(e, problema, new HttpHeaders(), status, request);
+	}
+	
+	@ExceptionHandler(AuthenticationException.class)
+	public ResponseEntity<?> handleAuthentication(AuthenticationException e, WebRequest request) {
+
+		HttpStatus status = HttpStatus.UNAUTHORIZED;
+		ProblemType problemType = ProblemType.ERRO_AUTHENTICATION;
+		String detail = e.getMessage();
+
+		Problem problema = createProblemBuilder(status, problemType, detail).userMesage(detail).build();
+
+		return handleExceptionInternal(e, problema, new HttpHeaders(), status, request);
+	}
+	
+	@ExceptionHandler(AccessDeniedException.class)
+	public ResponseEntity<?> handleAcessoNegado(AcessoNegadoException e, WebRequest request) {
+
+		HttpStatus status = HttpStatus.FORBIDDEN;
+		ProblemType problemType = ProblemType.ERRO_ACESSO_NEGADO;
 		String detail = e.getMessage();
 
 		Problem problema = createProblemBuilder(status, problemType, detail).userMesage(detail).build();

@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.my.erp.domain.exception.EntidadeEmUsoException;
@@ -30,6 +31,9 @@ public class UsuarioService {
 	@Autowired
 	private EntityManager manager;
 	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	private static final String msg_usuario_em_uso = "O usuário de codigo identificador %d está em uso";
 	private static final String msg_usuario_inativo = "O usuário de codigo identificador %d está inativo";
 	
@@ -41,6 +45,7 @@ public class UsuarioService {
 			throw new NegocioException(
 					String.format("Já existe um usuario cadastrado com o e-mail %s", usuario.getEmail()));
 		}
+		usuario.setSenha(codificarSenha(usuario.getSenha()));
 		return usuarioRepository.save(usuario);
 	}
 	
@@ -50,7 +55,7 @@ public class UsuarioService {
 		if(usuario.senhaNaoCoincideCom(senhaAtual)) {
 			throw new NegocioException("A senha atual informada não coincide com a senha do usuario");
 		}
-		usuario.setSenha(novaSenha);
+		usuario.setSenha(codificarSenha(novaSenha));
 	}
 	
 	@Transactional
@@ -79,6 +84,10 @@ public class UsuarioService {
 	public void ativar(Long id) {
 		Usuario usuario = buscarOuFalhar(id);
 		usuario.ativar();
+	}
+	
+	public String codificarSenha(String senha) {
+		return passwordEncoder.encode(senha);
 	}
 	
 	@Transactional

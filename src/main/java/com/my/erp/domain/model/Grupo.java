@@ -12,14 +12,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Grupo {
+public class Grupo implements GrantedAuthority{
 	
+	private static final long serialVersionUID = 1L;
+
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +43,12 @@ public class Grupo {
 	
 	public boolean associarPermissao(Permissao permissao) {
 		return getPermissoes().add(permissao);
+	}
+
+	@Override
+	public String getAuthority() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

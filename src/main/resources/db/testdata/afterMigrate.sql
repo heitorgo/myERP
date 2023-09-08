@@ -30,10 +30,7 @@ alter table produto auto_increment = 1;
 alter table grupo auto_increment = 1;
 alter table permissao auto_increment = 1; 
 
-insert into usuario (id, nome, email, senha, data_cadastro, data_atualizacao, ativo) values(1, "Cleber", "cleber.2022@gmail.com", "Cleber123@2022", utc_timestamp, utc_timestamp, true);
-insert into usuario (id, nome, email, senha, data_cadastro, data_atualizacao, ativo) values(2, "Josivalda", "jo.2020@gmail.com", "Jo5ivalda2020", utc_timestamp, utc_timestamp, true);
-insert into usuario (id, nome, email, senha, data_cadastro, data_atualizacao, ativo) values(3, "José Thiago", "zeth.1990@hotmail.com", "Zeth@1990", utc_timestamp, utc_timestamp, true);
-insert into usuario (id, nome, email, senha, data_cadastro, data_atualizacao, ativo) values(4, "Pedro", "pedro.1992@hotmail.com", "Pedr@1992", utc_timestamp, utc_timestamp, false);
+insert into usuario (id, nome, email, senha, data_cadastro, data_atualizacao, ativo) values(1, "cleber", "cleber.2022@gmail.com", "$2a$12$P1WD83QKGRIho0fhOSGDDuXEhTGIXOkhbPxR/ikEwBikvR7bN166G", utc_timestamp, utc_timestamp, true);
 
 insert into empresa (id, nome, razao_social, data_cadastro, data_atualizacao, ativo) values(1, "Auto Peças Itu", "Auto Peças Itu LTDA", utc_timestamp, utc_timestamp, true);
 insert into empresa (id, nome, razao_social, data_cadastro, data_atualizacao, ativo) values(2, "Atelie Mãos de Costura", "Atelie Mãos de Costura LTDA", utc_timestamp, utc_timestamp, true);
@@ -86,7 +83,7 @@ insert into grupo_permissao (grupo_id, permissao_id) values(1, 1);
 insert into grupo_permissao (grupo_id, permissao_id) values(2, 2);
 
 insert into usuario_grupo(usuario_id, grupo_id) values(1, 1);
-insert into usuario_grupo(usuario_id, grupo_id) values(3, 2);
+insert into usuario_grupo(usuario_id, grupo_id) values(1, 2);
 
 insert into empresa_usuario_responsavel(empresa_id, usuario_id) values(1, 1);
-insert into empresa_usuario_responsavel(empresa_id, usuario_id) values(3, 4);
+insert into empresa_usuario_responsavel(empresa_id, usuario_id) values(3, 1);
